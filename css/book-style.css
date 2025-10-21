@@ -1,0 +1,237 @@
+/*div{
+    border: 2px solid purple;
+}
+
+/* จัดการให้รูปภาพอยู่ตรงกลางทั้งแนวนอนและแนวตั้ง */
+.image-container {
+    display: flex;
+    justify-content: center;  /* จัดแนวนอน */
+    align-items: center;      /* จัดแนวตั้ง */
+    /*height: 100%;             /* ทำให้กล่องเต็มความสูง */
+}
+
+/* จัดการให้ข้อความอยู่ตรงกลางทั้งแนวนอนและแนวตั้ง */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* จัดแนวนอน */
+    align-items: center;      /* จัดแนวตั้ง */
+    height: 100%;             /* ทำให้กล่องเต็มความสูง */
+}
+
+/* เพิ่มเงารูปภาพที่ฟุ้งและละเอียดกว่าเดิม */
+.img-shadow {
+    max-width: 100%;
+    height: auto;
+    box-shadow: -20px 20px 40px 20px rgba(0, 0, 0, 0.5);  /* เงาที่ใหญ่ขึ้นและโปร่งใสมากขึ้น */
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* เงาเบาๆ ด้านขวาล่าง */
+}
+
+.semi-shadow {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 30px 20px 40px 10px rgba(0, 0, 0, 0.5);  /* เงาที่ใหญ่ขึ้นและโปร่งใสมากขึ้น */
+}
+
+/* ย่อหน้าบรรทัดแรกแบบยืดหยุ่น (responsive) */
+.first-line-indent {
+  /* ระยะย่อหน้า — ใช้ clamp เพื่อให้ขนาดปรับตามหน้าจอ */
+  text-indent: clamp(1rem, 2.5vw, 2.5rem);
+
+  /* ปรับรูปแบบทั่วไปให้ดูดีร่วมกับ Bootstrap */
+  margin: 0 0 1rem;      /* เว้นช่วงด้านล่างเท่าที่เหมาะ */
+  line-height: 1.7;      /* ความสูงบรรทัด อ่านง่ายในภาษาไทย */
+  font-size: 1rem;       /* ปรับตามที่ Bootstrap กำหนดได้ */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.carousel-img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.useful-box {
+    background-color: rgba(122, 168, 145, 0.8);       /* สีพื้นหลังนุ่มๆ */
+    border: 1px solid #d1e7ea;        /* ขอบสีอ่อน */
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;                     /* ให้กล่องสูงเท่ากันในแถวเดียวกัน */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* เงาเบาๆ */
+    transition: transform 0.3s ease;
+    color: #2e2e2e; /* สีตัวหนังสือขาว */
+    font-weight: 500; /* หนากำลังดีอ่านง่าย */
+       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.useful-box:hover {
+    transform: translateY(-5px);     /* เพิ่ม effect ตอน hover */
+}
+
+/* พื้นหลังกล่องรูปภาพ */
+.image-bg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;          /* ขอบมน */
+  overflow: visible;            /* ให้พื้นหลังเลยออกนอกกรอบได้ */
+}
+
+/* พื้นหลังสี #2e798a ที่เลยออกไป 5px */
+.image-bg::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  right: 0px;
+  bottom: -30px;
+  background-color: #2e798a;
+  border-radius: 50px;          /* ทำให้พื้นหลังมีขอบมนเช่นกัน */
+    /* โค้งเฉพาะขวาบน–ขวาล่าง */
+  border-top-right-radius: -30px;
+  border-bottom-right-radius: -30px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  z-index: 0;                   /* อยู่ใต้รูป */
+}
+.image-bg img {
+  position: relative;
+  z-index: 1;                   /* ให้อยู่เหนือพื้นหลัง */
+  border-radius: 10px;          /* ให้โค้งรับกับพื้นหลัง */
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* พื้นหลัง navbar */
+.navbar-custom {
+  background-color: rgba(46, 121, 138, 0.8); /* สี #2e798a โปร่งใส 80% */
+  backdrop-filter: blur(6px);                /* เพิ่มความเบลอเล็กน้อย (สวยแบบ glass effect) */
+}
+
+.navbar-custom .navbar-brand {
+  color: #ffffff;              /* สีตัวอักษรของแบรนด์ */
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar-custom .nav-link {
+  color: #ffffff;              /* สีของลิงก์ */
+  margin: 0 10px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #ffd700;              /* เปลี่ยนสีเมื่อ hover หรือ active */
+  transform: scale(1.05);      /* ขยายเล็กน้อยตอน hover */
+}
+
+.navbar-custom .navbar-toggler {
+  border-color: #ffffff;       /* เส้นขอบปุ่ม toggle */
+}
+
+.navbar-custom .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* พื้นหลังกล่องเปลี่ยนรูป */
+.carousel-custom {
+  background-color: #7aa891;   /* สีพื้นหลัง */
+  border-radius: 10px;         /* ขอบมนเล็กน้อยให้ดูนุ่มนวล */
+  padding: 10px;               /* เพิ่มพื้นที่รอบ ๆ รูป */
+  box-shadow: 10px 10px 20px 15px rgba(0, 0, 0, 0.5); /* เงาเบาๆ */
+}
+
+/* ปรับให้ปุ่มลูกศรสีเข้ากับพื้นหลัง */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%); /* เปลี่ยนลูกศรให้เป็นสีขาว */
+}
+
+/* จัดตำแหน่งภาพให้สวยงาม */
+.carousel-inner img {
+  border-radius: 0px;         /* มุมภาพมน */
+  object-fit: contain;         /* ให้ภาพอยู่ในกรอบพอดี */
+}
+
+/* ฟอนท์ตัวหนังสือ */
+.headFont{
+  font-family: 'Sriracha', cursive;
+  font-size: 2.8rem; /* เพิ่มขนาด */
+}
+.head-semi-Font{
+  font-family: 'Sriracha', cursive;
+  font-size: 2rem; /* เพิ่มขนาด */
+}
+
+.fontH5 {
+   font-family: 'Niramit', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem; /* เพิ่มขนาด */
+}
+
+.Pfont {
+   font-family: "Niramit", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.hFont {
+   font-family: 'Sriracha', cursive;
+  font-size: 2.5rem; /* เพิ่มขนาด */
+}
+
+.useHeadFont {
+   font-family: 'Sriracha', cursive;
+  font-size: 1.5rem; /* เพิ่มขนาด */
+}
+
+.usePFont {
+   font-family: "Mali", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+/* พื้นหลังกล่องสุดท้าย */
+.lastBox {
+    background-color: #2e798a; /* พื้นหลังเป็นสี #2e798a */
+    padding: 15px;  /*เพิ่มพื้นที่รอบๆ เพื่อให้เนื้อหาภายในดูไม่ติดขอบมากเกินไป */
+    border-radius: 0px; /* เพิ่มความโค้งมนให้กับขอบของกล่อง */
+}
+
+.lastBox .Pfont {
+    font-size: 16px; /* ขนาดฟอนต์สำหรับข้อความปกติ */
+    color: #ffffff; /* สีฟอนต์เป็นสีขาว */
+    line-height: 2; /* เพิ่มระยะห่างระหว่างบรรทัด */
+}
+
+.lastBox .head-semi-Font {
+   color: #ffffff;
+}
+
+/* กล่องวิดีโอ */
+.shadowBox {
+  box-shadow: 10px 10px 20px 15px rgba(0, 0, 0, 0.5); /* เงาเบาๆ */
+}
+
+.authorBox {
+    text-align: center;
+    padding: 20px;
+}
+
+.authorBox img {
+    width: 300px;         /* กำหนดขนาดภาพ */
+    height: 300px;        /* ให้เท่ากับ width เพื่อให้เป็นวงกลม */
+    border-radius: 50%;   /* ทำให้เป็นวงกลม */
+    object-fit: cover;    /* ครอบภาพให้พอดีโดยไม่ยืด */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* เงาเล็กน้อย */
+    margin-bottom: 20px;
+}
