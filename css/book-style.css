@@ -142,7 +142,7 @@
 
 /* พื้นหลังกล่องเปลี่ยนรูป */
 .carousel-custom {
-  max-width: 900px;
+  max-width: 90vh;
   background-color: #7aa891;   /* สีพื้นหลัง */
   border-radius: 10px;         /* ขอบมนเล็กน้อยให้ดูนุ่มนวล */
   padding: 0px;               /* เพิ่มพื้นที่รอบ ๆ รูป */
@@ -159,7 +159,7 @@
 .carousel-inner img {
   border-radius: 0px;         /* มุมภาพมน */
   object-fit: contain;         /* ให้ภาพอยู่ในกรอบพอดี */
-  height: 600px;
+  height: 60vh;
 
 }
 
